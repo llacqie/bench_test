@@ -19,7 +19,7 @@ path = "artemis.rs"
 
 [dependencies]
 mequeuev1 = { git = "https://github.com/mekosko/mequeue", package = "mequeue" }
-mequeuev2 = { git = "https://github.com/mekosko/mequeue", branch = "simply", package = "mequeue" }
+mequeuev2 = { git = "https://github.com/mekosko/mequeue", package = "mequeue", branch = "simply" }
 artemis-core = { git = "https://github.com/mekosko/artemis", branch = "deadlock" }
 tokio = { version = "1", features = ["full"] }
 async-trait = "0.1"
