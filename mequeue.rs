@@ -17,7 +17,7 @@ async fn main() {
 
     let now = tokio::time::Instant::now();
 
-    let executor = mequeue::Root::new(|_| async { None }).map(step1).map(step2);
+    let executor = mequeue::Root::new(|_| async { None }).map(step2).map(step1);
 
     for e in 0..10000000u64 {
         executor.enqueue(Message::Event(e)).await;
