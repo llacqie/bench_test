@@ -1,5 +1,3 @@
-use mequeuev1::Step;
-
 const SIZE: usize = 100000000usize;
 
 enum Message {
@@ -21,7 +19,8 @@ async fn main() {
 
     let executor = mequeuev1::Root::new(|_| async { None })
         .map("step1", step1)
-        .map("step2", step2);
+        .map("step2", step2)
+        .execute();
 
     for e in 0..SIZE {
         executor.enqueue("step1", Message::Event(e)).await;
