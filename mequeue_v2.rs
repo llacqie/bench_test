@@ -1,6 +1,6 @@
 use mequeuev2::Step;
 
-const SIZE: usize = 10000000usize;
+const SIZE: usize = 100000000usize;
 
 enum Message {
     Event(usize),
