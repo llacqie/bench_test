@@ -1,8 +1,10 @@
-use mequeue::Step;
+use mequeuev2::Step;
+
+const SIZE: usize = 10000000usize;
 
 enum Message {
-    Event(u64),
-    Action(Vec<u64>),
+    Event(usize),
+    Action(Vec<usize>),
 }
 
 #[tokio::main]
@@ -17,9 +19,11 @@ async fn main() {
 
     let now = tokio::time::Instant::now();
 
-    let executor = mequeue::Root::new(|_| async { None }).map(step2).map(step1);
+    let executor = mequeuev2::Root::new(|_| async { None })
+        .map(step2)
+        .map(step1);
 
-    for e in 0..10000000u64 {
+    for e in 0..SIZE {
         executor.enqueue(Message::Event(e)).await;
     }
 
