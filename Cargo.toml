@@ -6,20 +6,15 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [[bin]]
-name = "mequeue_v1"
-path = "mequeue_v1.rs"
-
-[[bin]]
-name = "mequeue_v2"
-path = "mequeue_v2.rs"
+name = "stepwise"
+path = "stepwise.rs"
 
 [[bin]]
 name = "artemis"
 path = "artemis.rs"
 
 [dependencies]
-mequeuev1 = { git = "https://github.com/mekosko/mequeue", package = "mequeue" }
-mequeuev2 = { git = "https://github.com/mekosko/mequeue", package = "mequeue", branch = "simply" }
+stepwise = { git = "https://github.com/mekosko/mequeue" }
 artemis-core = { git = "https://github.com/mekosko/artemis", branch = "deadlock" }
 tokio = { version = "1", features = ["full"] }
 async-trait = "0.1"

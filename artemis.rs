@@ -4,7 +4,7 @@ use artemis_core::{
 };
 use async_trait::async_trait;
 
-const SIZE: usize = 100000000usize;
+const SIZE: usize = 10000000usize;
 
 struct NCollector;
 
