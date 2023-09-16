@@ -3,6 +3,7 @@ use artemis_core::{
     types::{Collector, CollectorStream, Executor, Strategy},
 };
 use async_trait::async_trait;
+use tokio::sync::mpsc;
 
 const SIZE: usize = 10000000usize;
 
@@ -30,11 +31,15 @@ impl Strategy<usize, usize> for NStrategy {
     }
 }
 
-struct NExecutor;
+struct NExecutor(mpsc::Sender<()>);
 
 #[async_trait]
 impl Executor<usize> for NExecutor {
-    async fn execute(&self, _: usize) -> anyhow::Result<()> {
+    async fn execute(&self, a: usize) -> anyhow::Result<()> {
+        if a == SIZE - 1 {
+            self.0.send(()).await.unwrap();
+        };
+
         Ok(())
     }
 }
@@ -47,13 +52,17 @@ async fn main() {
 
     let now = tokio::time::Instant::now();
 
+    let (ready, mut maybe_ready) = tokio::sync::mpsc::channel::<()>(1);
+
     engine.add_collector(Box::new(NCollector));
     engine.add_strategy(Box::new(NStrategy));
-    engine.add_executor(Box::new(NExecutor));
+    engine.add_executor(Box::new(NExecutor(ready)));
 
     if let Ok(mut set) = engine.run().await {
         while let Some(_) = set.join_next().await {}
     }
+
+    maybe_ready.recv().await.unwrap();
 
     println!("{}", now.elapsed().as_secs_f64());
 

@@ -1,6 +1,6 @@
-use stepwise::Executor;
-
 const SIZE: usize = 10000000usize;
+
+type Ref<T1> = std::sync::Arc<T1>;
 
 enum Message {
     Event(usize),
@@ -9,36 +9,32 @@ enum Message {
 
 #[tokio::main]
 async fn main() {
-    let step1 = |e| async move {
-        match e {
-            Message::Event(e) => Some(Message::Action(vec![e])),
-            _ => panic!(),
-        }
-    };
     let (ready, mut maybe_ready) = tokio::sync::mpsc::channel::<()>(1);
 
-    let step2 = |a| {
+    let event_dispatcher = Ref::new(move |event| {
         let ready = ready.clone();
 
         async move {
-            match a {
+            match event {
+                Message::Event(e) => Some(Message::Action(vec![e])),
                 Message::Action(a) => {
                     if a[0] == SIZE - 1 {
                         ready.send(()).await.unwrap();
                     };
                     None
                 }
-                _ => panic!(),
             }
         }
-    };
+    });
+
+    let await_dispatcher = Ref::new(|_| async move {});
 
     let now = tokio::time::Instant::now();
 
-    let executor = stepwise::new(step1).map(step2);
+    let (executor, _) = mequeue::execute(SIZE, event_dispatcher, await_dispatcher);
 
     for e in 0..SIZE {
-        executor.execute(Message::Event(e)).await;
+        executor.send(Some(Message::Event(e))).await.unwrap();
     }
 
     maybe_ready.recv().await.unwrap();
