@@ -31,7 +31,7 @@ async fn main() {
 
     let now = tokio::time::Instant::now();
 
-    let (executor, _) = mequeue::execute(SIZE, event_dispatcher, await_dispatcher);
+    let (executor, _) = mequeue::new(SIZE, event_dispatcher, await_dispatcher);
 
     for e in 0..SIZE {
         executor.send(Some(Message::Event(e))).await.unwrap();

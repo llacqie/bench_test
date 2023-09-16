@@ -2212,7 +2212,7 @@ dependencies = [
 [[package]]
 name = "mequeue"
 version = "0.0.0"
-source = "git+https://github.com/mekosko/mequeue#4ae58a841350df63a3c17bde92f5b1c6c2b6c7f7"
+source = "git+https://github.com/mekosko/mequeue#bc6517f10c0aa21daffa95ae7178dc9120fc6a56"
 dependencies = [
  "async-trait",
  "tokio",
@@ -3633,7 +3633,7 @@ checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 [[package]]
 name = "stepwise"
 version = "0.0.1"
-source = "git+https://github.com/mekosko/mequeue#4ae58a841350df63a3c17bde92f5b1c6c2b6c7f7"
+source = "git+https://github.com/mekosko/mequeue#bc6517f10c0aa21daffa95ae7178dc9120fc6a56"
 dependencies = [
  "async-trait",
 ]
