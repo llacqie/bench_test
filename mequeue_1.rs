@@ -29,7 +29,7 @@ async fn main() {
 
     let await_dispatcher = Ref::new(|_| async move {});
 
-    let (executor, _) = mequeue::new(SIZE, event_dispatcher, await_dispatcher);
+    let (executor, _) = mequeue_1::new(SIZE, event_dispatcher, await_dispatcher);
 
     let now = tokio::time::Instant::now();
 

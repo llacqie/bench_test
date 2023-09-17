@@ -2219,6 +2219,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "mequeue"
+version = "0.0.0"
+source = "git+https://github.com/mekosko/mequeue#bc6517f10c0aa21daffa95ae7178dc9120fc6a56"
+dependencies = [
+ "async-trait",
+ "tokio",
+]
+
+[[package]]
 name = "mev-share"
 version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3759,7 +3768,8 @@ dependencies = [
  "artemis-core",
  "async-trait",
  "futures",
- "mequeue",
+ "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue?branch=ref_check)",
+ "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue)",
  "stepwise",
  "tokio",
  "tracing-subscriber",

@@ -10,8 +10,12 @@ name = "stepwise"
 path = "stepwise.rs"
 
 [[bin]]
-name = "mequeue"
-path = "mequeue.rs"
+name = "mequeue_2"
+path = "mequeue_2.rs"
+
+[[bin]]
+name = "mequeue_1"
+path = "mequeue_1.rs"
 
 [[bin]]
 name = "artemis"
@@ -20,7 +24,8 @@ path = "artemis.rs"
 [dependencies]
 stepwise = { git = "https://github.com/mekosko/mequeue" }
 artemis-core = { git = "https://github.com/mekosko/artemis", branch = "deadlock" }
-mequeue = { git = "https://github.com/mekosko/mequeue", branch = "ref_check" }
+mequeue_2 = { git = "https://github.com/mekosko/mequeue", branch = "ref_check", package = "mequeue" }
+mequeue_1 = { git = "https://github.com/mekosko/mequeue", package = "mequeue" }
 tokio = { version = "1", features = ["full"] }
 async-trait = "0.1"
 futures = "0.3"
