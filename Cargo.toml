@@ -26,6 +26,7 @@ name = "artemis"
 path = "artemis.rs"
 
 [dependencies]
+tachyonix = "0.2"
 stepwise = { git = "https://github.com/mekosko/mequeue" }
 artemis-core = { git = "https://github.com/mekosko/artemis", branch = "deadlock" }
 mequeue_2 = { git = "https://github.com/mekosko/mequeue", branch = "ref_check", package = "mequeue" }
