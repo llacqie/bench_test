@@ -29,9 +29,9 @@ async fn main() {
 
     let await_dispatcher = Ref::new(|_| async move {});
 
-    let now = tokio::time::Instant::now();
-
     let (executor, _) = mequeue::new(SIZE, event_dispatcher, await_dispatcher);
+
+    let now = tokio::time::Instant::now();
 
     for e in 0..SIZE {
         executor.send(Some(Message::Event(e))).await.unwrap();
