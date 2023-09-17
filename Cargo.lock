@@ -2212,7 +2212,7 @@ dependencies = [
 [[package]]
 name = "mequeue"
 version = "0.0.0"
-source = "git+https://github.com/mekosko/mequeue?branch=ref_check#3a78abca85431cb1533dc88080fc28d8b6db5ee6"
+source = "git+https://github.com/mekosko/mequeue?branch=ref_check#3097721589140386d35bcf05fc50824c61756545"
 dependencies = [
  "async-trait",
  "tokio",
