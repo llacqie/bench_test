@@ -18,6 +18,10 @@ name = "mequeue_1"
 path = "mequeue_1.rs"
 
 [[bin]]
+name = "check"
+path = "check.rs"
+
+[[bin]]
 name = "artemis"
 path = "artemis.rs"
 
