@@ -2266,15 +2266,6 @@ dependencies = [
 [[package]]
 name = "mequeue"
 version = "0.0.0"
-source = "git+https://github.com/mekosko/mequeue?branch=ref_check#3097721589140386d35bcf05fc50824c61756545"
-dependencies = [
- "async-trait",
- "tokio",
-]
-
-[[package]]
-name = "mequeue"
-version = "0.0.0"
 source = "git+https://github.com/mekosko/mequeue#bc6517f10c0aa21daffa95ae7178dc9120fc6a56"
 dependencies = [
  "async-trait",
@@ -3715,14 +3706,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 
 [[package]]
-name = "stepwise"
-version = "0.0.1"
-source = "git+https://github.com/mekosko/mequeue#bc6517f10c0aa21daffa95ae7178dc9120fc6a56"
-dependencies = [
- "async-trait",
-]
-
-[[package]]
 name = "string_cache"
 version = "0.8.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3856,9 +3839,7 @@ dependencies = [
  "artemis-core",
  "async-trait",
  "futures",
- "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue?branch=ref_check)",
- "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue)",
- "stepwise",
+ "mequeue",
  "tachyonix",
  "tokio",
  "tracing-subscriber",
