@@ -2255,6 +2255,17 @@ dependencies = [
 [[package]]
 name = "mequeue"
 version = "0.0.0"
+source = "git+https://github.com/mekosko/mequeue?branch=no_wal#ce3325f1db1bc61261e90872eea3bd83c36585b5"
+dependencies = [
+ "async-channel",
+ "async-trait",
+ "parking_lot",
+ "tokio",
+]
+
+[[package]]
+name = "mequeue"
+version = "0.0.0"
 source = "git+https://github.com/mekosko/mequeue?branch=with_flume#3ce42b94a31a64b6da7c17c42d73941118e2a3ef"
 dependencies = [
  "async-trait",
@@ -3833,6 +3844,7 @@ dependencies = [
  "async-trait",
  "flume",
  "futures",
+ "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue?branch=no_wal)",
  "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue?branch=with_flume)",
  "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue)",
  "tachyonix",
