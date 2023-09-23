@@ -2135,6 +2135,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "kanal"
+version = "0.1.0-pre8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b05d55519627edaf7fd0f29981f6dc03fb52df3f5b257130eb8d0bf2801ea1d7"
+dependencies = [
+ "futures-core",
+ "lock_api",
+]
+
+[[package]]
 name = "keccak"
 version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2270,6 +2280,17 @@ source = "git+https://github.com/mekosko/mequeue?branch=with_flume#3ce42b94a31a6
 dependencies = [
  "async-trait",
  "flume",
+ "parking_lot",
+ "tokio",
+]
+
+[[package]]
+name = "mequeue"
+version = "0.0.0"
+source = "git+https://github.com/mekosko/mequeue?branch=with_kanal#338cf31bac2b2aa5bbfd0a4f0d318eabfb5e73cd"
+dependencies = [
+ "async-trait",
+ "kanal",
  "parking_lot",
  "tokio",
 ]
@@ -3844,8 +3865,10 @@ dependencies = [
  "async-trait",
  "flume",
  "futures",
+ "kanal",
  "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue?branch=no_wal)",
  "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue?branch=with_flume)",
+ "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue?branch=with_kanal)",
  "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue)",
  "tachyonix",
  "tokio",
