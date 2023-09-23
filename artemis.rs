@@ -5,7 +5,7 @@ use artemis_core::{
 use async_trait::async_trait;
 use tokio::sync::mpsc;
 
-const SIZE: usize = 10000000usize;
+const SIZE: usize = 100000000usize;
 
 struct NCollector;
 
@@ -50,13 +50,13 @@ async fn main() {
         .with_event_channel_capacity(SIZE)
         .with_action_channel_capacity(SIZE);
 
-    let now = tokio::time::Instant::now();
-
     let (ready, mut maybe_ready) = tokio::sync::mpsc::channel::<()>(1);
 
     engine.add_collector(Box::new(NCollector));
     engine.add_strategy(Box::new(NStrategy));
     engine.add_executor(Box::new(NExecutor(ready)));
+
+    let now = tokio::time::Instant::now();
 
     if let Ok(mut set) = engine.run().await {
         while let Some(_) = set.join_next().await {}
