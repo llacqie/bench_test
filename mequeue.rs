@@ -1,7 +1,9 @@
+use std::time::Duration;
+
 use mequeue::executor::Executor;
 use tokio::sync::{broadcast, mpsc};
 
-const SIZE: usize = 100000000usize;
+const SIZE: usize = 10000000usize;
 
 async fn checker(mut receiver: mpsc::Receiver<Vec<usize>>, ck: mpsc::Sender<()>) {
     while let Some(event) = receiver.recv().await {
@@ -16,7 +18,7 @@ async fn main() {
     let (ws, state) = broadcast::channel(512);
     let (we, event) = async_channel::bounded(512);
 
-    let executor = Executor::new(state, event, 12);
+    let executor = Executor::new(state, event, 8);
 
     let (wx, receiver) = mpsc::channel(512);
 
@@ -34,6 +36,8 @@ async fn main() {
     tokio::spawn(checker(receiver, ck));
 
     ws.send(()).unwrap();
+
+    tokio::time::sleep(Duration::from_secs(1)).await;
 
     let now = tokio::time::Instant::now();
 
