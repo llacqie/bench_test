@@ -3,7 +3,7 @@ use std::time::Duration;
 use mequeue::executor::Executor;
 use tokio::sync::{broadcast, mpsc};
 
-const SIZE: usize = 10000000usize;
+const SIZE: usize = 100000000usize;
 
 async fn checker(mut receiver: mpsc::Receiver<Vec<usize>>, ck: mpsc::Sender<()>) {
     while let Some(event) = receiver.recv().await {
