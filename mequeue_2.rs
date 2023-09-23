@@ -16,7 +16,7 @@ async fn checker(mut receiver: tachyonix::Receiver<Vec<usize>>, ck: mpsc::Sender
 #[tokio::main]
 async fn main() {
     let (ws, state) = broadcast::channel(512);
-    let (we, event) = async_channel::bounded(512);
+    let (we, event) = flume::bounded(512);
 
     let executor = Executor::new(state, event, 8);
 
@@ -42,7 +42,7 @@ async fn main() {
     let now = tokio::time::Instant::now();
 
     for event in 0..SIZE {
-        we.send(event).await.unwrap();
+        we.send_async(event).await.unwrap();
     }
 
     check.recv().await.unwrap();

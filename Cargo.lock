@@ -3831,6 +3831,7 @@ dependencies = [
  "artemis-core",
  "async-channel",
  "async-trait",
+ "flume",
  "futures",
  "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue?branch=with_flume)",
  "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue)",

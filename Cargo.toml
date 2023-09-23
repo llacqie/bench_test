@@ -10,6 +10,10 @@ name = "mequeue_1"
 path = "mequeue_1.rs"
 
 [[bin]]
+name = "mequeue_2"
+path = "mequeue_2.rs"
+
+[[bin]]
 name = "check"
 path = "check.rs"
 
@@ -28,3 +32,4 @@ futures = "0.3"
 anyhow = "1"
 tracing-subscriber = "0.3"
 async-channel = "1"
+flume = "0.11"
