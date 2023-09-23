@@ -1,6 +1,6 @@
 use std::time::Duration;
 
-use mequeue::executor::Executor;
+use mequeue_2::executor::Executor;
 use tokio::sync::{broadcast, mpsc};
 
 const SIZE: usize = 100000000usize;

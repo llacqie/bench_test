@@ -1268,6 +1268,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "flume"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "55ac459de2512911e4b674ce33cf20befaba382d05b62b008afc1c8b57cbf181"
+dependencies = [
+ "futures-core",
+ "futures-sink",
+ "nanorand",
+ "spin 0.9.8",
+]
+
+[[package]]
 name = "fnv"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1488,8 +1500,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "be4136b2a15dd319360be1c07d9933517ccf0be8f16bf62a3bee4f0d618df427"
 dependencies = [
  "cfg-if",
+ "js-sys",
  "libc",
  "wasi 0.11.0+wasi-snapshot-preview1",
+ "wasm-bindgen",
 ]
 
 [[package]]
@@ -2241,6 +2255,17 @@ dependencies = [
 [[package]]
 name = "mequeue"
 version = "0.0.0"
+source = "git+https://github.com/mekosko/mequeue?branch=with_flume#3ce42b94a31a64b6da7c17c42d73941118e2a3ef"
+dependencies = [
+ "async-trait",
+ "flume",
+ "parking_lot",
+ "tokio",
+]
+
+[[package]]
+name = "mequeue"
+version = "0.0.0"
 source = "git+https://github.com/mekosko/mequeue#245a5ff32e8db02f9b934a3d15d4f2b3bfb3e1b4"
 dependencies = [
  "async-channel",
@@ -2325,6 +2350,15 @@ dependencies = [
  "libc",
  "wasi 0.11.0+wasi-snapshot-preview1",
  "windows-sys",
+]
+
+[[package]]
+name = "nanorand"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6a51313c5820b0b02bd422f4b44776fbf47961755c74ce64afc73bfad10226c3"
+dependencies = [
+ "getrandom 0.2.10",
 ]
 
 [[package]]
@@ -3105,7 +3139,7 @@ dependencies = [
  "cc",
  "libc",
  "once_cell",
- "spin",
+ "spin 0.5.2",
  "untrusted",
  "web-sys",
  "winapi",
@@ -3639,6 +3673,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 
 [[package]]
+name = "spin"
+version = "0.9.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6980e8d7511241f8acf4aebddbb1ff938df5eebe98691418c4468d0b72a96a67"
+dependencies = [
+ "lock_api",
+]
+
+[[package]]
 name = "spki"
 version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3789,7 +3832,8 @@ dependencies = [
  "async-channel",
  "async-trait",
  "futures",
- "mequeue",
+ "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue?branch=with_flume)",
+ "mequeue 0.0.0 (git+https://github.com/mekosko/mequeue)",
  "tachyonix",
  "tokio",
  "tracing-subscriber",
