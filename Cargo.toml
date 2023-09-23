@@ -18,10 +18,6 @@ name = "mequeue_3"
 path = "mequeue_3.rs"
 
 [[bin]]
-name = "mequeue_4"
-path = "mequeue_4.rs"
-
-[[bin]]
 name = "check"
 path = "check.rs"
 
@@ -35,7 +31,6 @@ artemis-core = { git = "https://github.com/mekosko/artemis", branch = "deadlock"
 mequeue_1 = { git = "https://github.com/mekosko/mequeue", package = "mequeue" }
 mequeue_2 = { git = "https://github.com/mekosko/mequeue", package = "mequeue", branch = "with_flume" }
 mequeue_3 = { git = "https://github.com/mekosko/mequeue", package = "mequeue", branch = "no_wal" }
-mequeue_4 = { git = "https://github.com/mekosko/mequeue", package = "mequeue", branch = "with_kanal" }
 tokio = { version = "1", features = ["full"] }
 async-trait = "0.1"
 futures = "0.3"
