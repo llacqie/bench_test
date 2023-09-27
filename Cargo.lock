@@ -2276,7 +2276,7 @@ dependencies = [
 [[package]]
 name = "mequeue"
 version = "0.0.0"
-source = "git+https://github.com/mekosko/mequeue?branch=with_arc_clone#4cde733486eaffbbe54851b6decde1ba8b09a738"
+source = "git+https://github.com/mekosko/mequeue?branch=with_arc_clone#f6c89cc039b6dde838b21af89ea70e8ed705135d"
 dependencies = [
  "async-channel",
  "async-trait",
