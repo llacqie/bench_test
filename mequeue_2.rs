@@ -15,12 +15,12 @@ async fn checker(mut receiver: broadcast::Receiver<Vec<usize>>, ck: mpsc::Sender
 
 #[tokio::main]
 async fn main() {
-    let (ws, state) = broadcast::channel(512);
-    let (we, event) = async_channel::bounded(512);
+    let (ws, state) = broadcast::channel(SIZE);
+    let (we, event) = async_channel::bounded(SIZE);
 
     let executor = Executor::new(state, event, 8);
 
-    let (wx, receiver) = broadcast::channel(512);
+    let (wx, receiver) = broadcast::channel(SIZE);
 
     let worker = move |_, event: usize| {
         let wx = wx.clone();
