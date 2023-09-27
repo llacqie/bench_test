@@ -15,7 +15,7 @@ async fn checker(mut receiver: broadcast::Receiver<Vec<usize>>, ck: mpsc::Sender
 
 #[tokio::main]
 async fn main() {
-    let (ws, state) = broadcast::channel(SIZE);
+    let (ws, state) = broadcast::channel(1);
     let (we, event) = async_channel::bounded(SIZE);
 
     let executor = Executor::new(state, event, 8);
@@ -30,7 +30,7 @@ async fn main() {
         }
     };
 
-    let (ck, mut check) = mpsc::channel(512);
+    let (ck, mut check) = mpsc::channel(1);
 
     tokio::spawn(executor.receive(worker));
     tokio::spawn(checker(receiver, ck));
