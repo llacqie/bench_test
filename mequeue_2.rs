@@ -5,7 +5,7 @@ use tokio::sync::{broadcast, mpsc};
 
 const SIZE: usize = 100000000usize;
 
-async fn checker(mut receiver: tachyonix::Receiver<Vec<usize>>, ck: mpsc::Sender<()>) {
+async fn checker(mut receiver: broadcast::Receiver<Vec<usize>>, ck: mpsc::Sender<()>) {
     while let Ok(event) = receiver.recv().await {
         if event[0] == SIZE - 1 {
             ck.send(()).await.unwrap();
@@ -20,13 +20,13 @@ async fn main() {
 
     let executor = Executor::new(state, event, 8);
 
-    let (wx, receiver) = tachyonix::channel(512);
+    let (wx, receiver) = broadcast::channel(512);
 
     let worker = move |_, event: usize| {
         let wx = wx.clone();
 
         async move {
-            wx.send(vec![event]).await.unwrap();
+            wx.send(vec![event]).unwrap();
         }
     };
 
