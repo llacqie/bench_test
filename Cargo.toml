@@ -32,7 +32,7 @@ path = "artemis.rs"
 tachyonix = "0.2"
 artemis-core = { git = "https://github.com/mekosko/artemis", branch = "deadlock" }
 mequeue_1 = { git = "https://github.com/mekosko/mequeue", package = "mequeue" }
-mequeue_2 = { git = "https://github.com/mekosko/mequeue", package = "mequeue", branch = "with_flume" }
+mequeue_2 = { git = "https://github.com/mekosko/mequeue", package = "mequeue", branch = "with_arc_clone" }
 mequeue_3 = { git = "https://github.com/mekosko/mequeue", package = "mequeue", branch = "no_wal" }
 tokio = { version = "1", features = ["full"] }
 async-trait = "0.1"
